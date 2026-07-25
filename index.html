@@ -5,15 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>السينما في بيتك - أحدث الأفلام والمسلسلات بجودة عالية</title>
     <meta name="description" content="استمتع بمشاهدة أحدث الأفلام العربية والعالمية، الحصرية والمسلسلات بجودة عالية وبدون إعلانات مزعجة. السينما في بيتك وجهتك الأولى للترفيه.">
-    <meta name="keywords" content="السينما في بيتك, مشاهدة أفلام أونلاين, تحميل أفلام جديدة, مسلسلات حصرية, أحدث الأفلام 2026, سينما البيت, افلام عربية وعالمية">
     <style>
         body {
             font-family: Tahoma, Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
             text-align: center;
-            padding: 20px;
+            padding: 0;
             margin: 0;
+        }
+        /* شريط التنقل العلوي */
+        .navbar {
+            background-color: #1f1f1f;
+            padding: 12px 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 2px solid #e50914;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #e50914;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
         h1 {
             color: #e50914;
@@ -23,14 +52,16 @@
             color: #b3b3b3;
             font-size: 16px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        .section-title {
+            color: #fff;
+            text-align: right;
+            margin-top: 35px;
+            border-right: 4px solid #e50914;
+            padding-right: 10px;
         }
         .movie-card {
             background: #1f1f1f;
-            margin: 15px 0;
+            margin: 12px 0;
             padding: 15px;
             border-radius: 8px;
             text-align: right;
@@ -40,7 +71,7 @@
             flex-wrap: wrap;
         }
         .movie-title {
-            font-size: 18px;
+            font-size: 16px;
             color: #fff;
             font-weight: bold;
         }
@@ -51,6 +82,7 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 14px;
         }
         .watch-btn:hover {
             background-color: #b20710;
@@ -65,32 +97,54 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>السينما في بيتك</h1>
-    <p>وجهتك الأولى لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية.</p>
-
-    <!-- مكان إعلان Adsterra -->
-    <div class="ad-box">
-        <script type="text/javascript">
-            // حط هنا كود إعلان Adsterra لو حابب، أو سيبه دلوقتي
-        </script>
+    <!-- شريط القوائم العلوي -->
+    <div class="navbar">
+        <a href="#arabic-movies">أفلام عربي</a>
+        <a href="#foreign-movies">أفلام أجنبي</a>
+        <a href="#series">مسلسلات عربية وأجنبية</a>
+        <a href="#plays">مسرحيات</a>
     </div>
 
-    <h2 style="color: #fff; text-align: right; margin-top: 30px;">أحدث الأفلام المتاحة</h2>
+    <div class="container">
+        <h1>السينما في بيتك</h1>
+        <p>وجهتك الأولى لمشاهدة أحدث الأفلام والمسلسلات بجودة عالية.</p>
 
-    <!-- فيلم رقم 1 -->
-    <div class="movie-card">
-        <span class="movie-title">🎬 اسم الفيلم الأول هنا</span>
-        <a href="رابط_الفيلم_هنا" class="watch-btn" target="_blank">مشاهدة الآن</a>
+        <!-- مكان إعلان Adsterra -->
+        <div class="ad-box">
+            <script type="text/javascript">
+                // حط هنا كود إعلان Adsterra الخاص بك
+            </script>
+        </div>
+
+        <!-- قسم أفلام عربي -->
+        <h2 id="arabic-movies" class="section-title">🎬 أفلام عربي</h2>
+        <div class="movie-card">
+            <span class="movie-title">اسم فيلم عربي هنا</span>
+            <a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a>
+        </div>
+
+        <!-- قسم أفلام أجنبي -->
+        <h2 id="foreign-movies" class="section-title">🎬 أفلام أجنبي</h2>
+        <div class="movie-card">
+            <span class="movie-title">اسم فيلم أجنبي هنا</span>
+            <a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a>
+        </div>
+
+        <!-- قسم المسلسلات -->
+        <h2 id="series" class="section-title">📺 مسلسلات عربية وأجنبية</h2>
+        <div class="movie-card">
+            <span class="movie-title">اسم المسلسل هنا</span>
+            <a href="رابط_المسلسل" class="watch-btn" target="_blank">مشاهدة الآن</a>
+        </div>
+
+        <!-- قسم المسرحيات -->
+        <h2 id="plays" class="section-title">🎭 مسرحيات</h2>
+        <div class="movie-card">
+            <span class="movie-title">اسم المسرحية هنا</span>
+            <a href="رابط_المسرحية" class="watch-btn" target="_blank">مشاهدة الآن</a>
+        </div>
+
     </div>
-
-    <!-- فيلم رقم 2 -->
-    <div class="movie-card">
-        <span class="movie-title">🎬 اسم الفيلم الثاني هنا</span>
-        <a href="رابط_الفيلم_هنا" class="watch-btn" target="_blank">مشاهدة الآن</a>
-    </div>
-
-</div>
 
 </body>
 </html>
