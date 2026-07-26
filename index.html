@@ -6,98 +6,104 @@
 <title>السينما في بيتك - أحدث الأفلام والمسلسلات</title>
 <style>
 body {
-    font-family: Tahoma, Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    text-align: center;
-    padding: 0;
-    margin: 0;
+font-family: Tahoma, Arial, sans-serif;
+background-color: #121212;
+color: #ffffff;
+text-align: center;
+padding: 0;
+margin: 0;
 }
 .navbar {
-    background-color: #1f1f1f;
-    padding: 12px 10px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    border-bottom: 2px solid #e50914;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+background-color: #1f1f1f;
+padding: 12px 10px;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 15px;
+border-bottom: 2px solid #e50914;
+position: sticky;
+top: 0;
+z-index: 1000;
 }
 .navbar a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 4px;
-    transition: background 0.3s;
+color: #ffffff;
+text-decoration: none;
+font-size: 15px;
+font-weight: bold;
+padding: 6px 12px;
+border-radius: 4px;
+transition: background 0.3s;
 }
 .navbar a:hover {
-    background-color: #e50914;
+background-color: #e50914;
 }
 .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
 }
 h1 {
-    color: #e50914;
-    margin-top: 20px;
+color: #e50914;
+margin-top: 20px;
 }
 p {
-    color: #b3b3b3;
-    font-size: 16px;
-}
-.ad-box {
-    margin: 20px auto;
-    padding: 15px;
-    background: #1f1f1f;
-    border-radius: 8px;
-    min-height: 90px;
+color: #b3b3b3;
+font-size: 16px;
 }
 .section-title {
-    color: #fff;
-    text-align: right;
-    margin-top: 30px;
-    border-right: 4px solid #e50914;
-    padding-right: 10px;
-    font-size: 18px;
+color: #fff;
+text-align: right;
+margin-top: 35px;
+border-right: 4px solid #e50914;
+padding-right: 10px;
+font-size: 20px;
 }
-/* تصميم شبكة الأفلام لتظهر جنب بعضها */
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+.movie-card {
+background: #1f1f1f;
+margin: 12px 0;
+padding: 12px;
+border-radius: 8px;
+text-align: right;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
 }
-.movie-item {
-    background: #1f1f1f;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
+.movie-info {
+display: flex;
+align-items: center;
+gap: 12px;
 }
-.movie-name {
-    font-size: 14px;
-    color: #fff;
-    font-weight: bold;
+.movie-poster {
+width: 50px;
+height: 70px;
+object-fit: cover;
+border-radius: 4px;
+background-color: #333;
 }
-.movie-item a {
-    background-color: #e50914;
-    color: white;
-    padding: 8px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: bold;
+.movie-title {
+font-size: 16px;
+color: #fff;
+font-weight: bold;
 }
-.movie-item a:hover {
-    background-color: #b20710;
+.watch-btn {
+background-color: #e50914;
+color: white;
+padding: 8px 15px;
+border-radius: 5px;
+text-decoration: none;
+font-weight: bold;
+font-size: 14px;
+}
+.watch-btn:hover {
+background-color: #b20710;
+}
+.ad-box {
+margin: 20px auto;
+padding: 15px;
+background: #1f1f1f;
+border-radius: 8px;
 }
 </style>
 </head>
@@ -105,55 +111,67 @@ p {
 
 <!-- شريط القوائم العلوي -->
 <div class="navbar">
-    <a href="#arabic">أفلام عربي</a>
-    <a href="#foreign">أفلام أجنبي</a>
-    <a href="#series">مسلسلات</a>
-    <a href="#plays">مسرحيات</a>
+<a href="#arabic-section">أفلام عربي</a>
+<a href="#foreign-section">أفلام أجنبي</a>
+<a href="#series-section">مسلسلات</a>
+<a href="#plays-section">مسرحيات</a>
 </div>
 
 <div class="container">
-    <h1>السينما في بيتك</h1>
-    <p>استمتع بأحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات مزعجة لموقعك.</p>
+<h1>السينما في بيتك</h1>
+<p>استمتع بأحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات مزعجة.</p>
 
-    <!-- مكان إعلان Native Banner -->
-    <div class="ad-box">
-        <script async="async" data-cfasync="false" src="https://pl30536636.effectivecpmnetwork.com/0d7178a4d0671edd1d94a2119497b065/invoke.js"></script>
-        <div id="container-0d7178a4d0671edd1d94a2119497b065"></div>
-    </div>
-
-    <!-- قسم الأفلام العربية (الأفلام هتظهر جنم بعض هنا) -->
-    <h2 id="arabic" class="section-title">🎬 أفلام عربي</h2>
-    <div class="movies-grid">
-        <!-- فيلم 1 -->
-        <div class="movie-item">
-            <span class="movie-name">اسم الفيلم الأول</span>
-            <a href="رابط_الفيلم_هنا" target="_blank">مشاهدة الآن</a>
-        </div>
-        <!-- فيلم 2 -->
-        <div class="movie-item">
-            <span class="movie-name">اسم الفيلم الثاني</span>
-            <a href="رابط_الفيلم_هنا" target="_blank">مشاهدة الآن</a>
-        </div>
-        <!-- فيلم 3 -->
-        <div class="movie-item">
-            <span class="movie-name">اسم الفيلم الثالث</span>
-            <a href="رابط_الفيلم_هنا" target="_blank">مشاهدة الآن</a>
-        </div>
-    </div>
-
-    <!-- قسم الأفلام الأجنبية -->
-    <h2 id="foreign" class="section-title">🎬 أفلام أجنبي</h2>
-    <div class="movies-grid">
-        <div class="movie-item">
-            <span class="movie-name">اسم الفيلم الأجنبي</span>
-            <a href="رابط_الفيلم_هنا" target="_blank">مشاهدة الآن</a>
-        </div>
-    </div>
-
+<!-- مكان إعلان Adsterra -->
+<div class="ad-box">
+<script type="text/javascript">
+// الصق كود إعلان Adsterra هنا
+</script>
 </div>
 
-<!-- إعلان Social Bar -->
-<script type="text/javascript" src="https://pl30536636.effectivecpmnetwork.com/04/39/2d/04392d1d97986df20738e39faa9c55be.js"></script>
+<!-- قسم الأفلام العربية -->
+<div id="arabic-section" class="section-title">🎬 أفلام عربي</div>
 
+<div class="movie-card">
+<div class="movie-info">
+<img src="رابط_صورة_الفيلم_هنا" alt="Poster" class="movie-poster">
+<span class="movie-title">🎬 اسم الفيلم العربي الأول</span>
+</div>
+<a href="رابط_الفيلم_هنا" class="watch-btn" target="_blank">مشاهدة الآن</a>
+</div>
+
+<!-- قسم الأفلام الأجنبية -->
+<div id="foreign-section" class="section-title">🎬 أفلام أجنبي</div>
+
+<div class="movie-card">
+<div class="movie-info">
+<img src="رابط_صورة_الفيلم_هنا" alt="Poster" class="movie-poster">
+<span class="movie-title">🎬 اسم الفيلم الأجنبي الأول</span>
+</div>
+<a href="رابط_الفيلم_هنا" class="watch-btn" target="_blank">مشاهدة الآن</a>
+</div>
+
+<!-- قسم المسلسلات -->
+<div id="series-section" class="section-title">📺 مسلسلات</div>
+
+<div class="movie-card">
+<div class="movie-info">
+<img src="رابط_صورة_المسلسل_هنا" alt="Poster" class="movie-poster">
+<span class="movie-title">📺 اسم المسلسل الأول</span>
+</div>
+<a href="رابط_المسلسل_هنا" class="watch-btn" target="_blank">مشاهدة الآن</a>
+</div>
+
+<!-- قسم المسرحيات -->
+<div id="plays-section" class="section-title">🎭 مسرحيات</div>
+
+<div class="movie-card">
+<div class="movie-info">
+<img src="رابط_صورة_المسرحية_هنا" alt="Poster" class="movie-poster">
+<span class="movie-title">🎭 اسم المسرحية الأولى</span>
+</div>
+<a href="رابط_المسرحية_هنا" class="watch-btn" target="_blank">مشاهدة الآن</a>
+</div>
+
+</div>
 </body>
 </html>
