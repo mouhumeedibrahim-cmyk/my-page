@@ -5,174 +5,412 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>السينما في بيتك</title>
     <style>
+        /* التنسيقات العامة الأساسية */
         body {
             background-color: #121212;
-            color: #ffffff;
+            color: #fff;
             font-family: Tahoma, sans-serif;
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: #1f1f1f;
+
+        nav {
+            background: #181818;
             padding: 15px;
             text-align: center;
             border-bottom: 2px solid #e50914;
         }
+
         nav a {
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
             margin: 0 15px;
             font-size: 16px;
         }
+
         nav a:hover {
             color: #e50914;
         }
+
+        /* التعديل 19: رسالة ترحيب أعلى الموقع */
+        .welcome-box {
+            background: #222;
+            padding: 12px;
+            text-align: center;
+            color: #fff;
+            border-bottom: 2px solid #e50914;
+        }
+
         .hero {
             text-align: center;
-            padding: 25px 20px;
+            padding: 40px 20px;
         }
+
         .hero h1 {
-            color: #e50914;
-            font-size: 26px;
-            margin-bottom: 5px;
+            font-size: 32px;
+            margin-bottom: 15px;
         }
-        .hero p {
-            color: #b3b3b3;
-            font-size: 13px;
+
+        .search-input {
+            padding: 12px;
+            width: 60%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: none;
+            background: #222;
+            color: #fff;
+            font-size: 16px;
         }
+
+        /* تنسيق عناوين الأقسام الجديدة */
         .section-title {
-            padding: 10px 20px;
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            margin: 30px 20px 15px;
+            text-align: right;
             border-right: 4px solid #e50914;
-            margin: 20px 15px;
-            background-color: #181818;
+            padding-right: 10px;
         }
-        /* تنسيق شبكة الأفلام لتكون بجانب بعضها (10 مربعات) */
+
         .movies-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            padding: 0 15px;
-            justify-content: flex-start;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
         }
+
         .movie-card {
-            background-color: #1f1f1f;
-            width: 130px;
-            border-radius: 6px;
+            background: #1e1e1e;
+            border-radius: 8px;
             overflow: hidden;
+            width: 180px;
             text-align: center;
             padding-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            /* التعديل 15: تأثير ظهور كارت الفيلم */
+            animation: fadeMovie 0.5s ease;
         }
-        .movie-poster {
+
+        .poster-link {
+            position: relative;
+            display: block;
+        }
+
+        .poster-link img, .movie-poster {
             width: 100%;
-            height: 180px;
-            background-color: #2c2c2c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-size: 12px;
+            height: 260px;
+            object-fit: cover;
+            display: block;
         }
+
+        .quality {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e50914;
+            color: #fff;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
         .movie-title {
-            font-size: 13px;
-            margin: 8px 0;
+            font-size: 15px;
+            margin: 10px 5px;
             color: #fff;
         }
+
+        /* التعديل 11: تأثير عند مرور الماوس على زر المشاهدة */
         .watch-btn {
-            background-color: #e50914;
-            color: white;
+            background: #e50914;
+            color: #fff;
             border: none;
-            padding: 5px 12px;
-            font-size: 12px;
-            border-radius: 3px;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            transition: 0.3s;
         }
+
         .watch-btn:hover {
-            background-color: #f40612;
+            transform: scale(1.08);
+            box-shadow: 0 0 10px #e50914;
         }
-        /* تنسيق حاوية الإعلان الأول (Native Banner) */
-        .ad-container {
+
+        /* التعديل 12: تنسيق شريط تمت الإضافة حديثًا */
+        .new-bar {
+            background: #e50914;
+            color: #fff;
             text-align: center;
-            margin: 25px auto;
+            padding: 12px;
+            font-weight: bold;
+            margin: 20px 15px;
+            border-radius: 8px;
+        }
+
+        /* التعديل 13: تنسيق عداد الأفلام */
+        .movie-count {
+            text-align: center;
+            color: #bbb;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        /* التعديل 14: تنسيق أيقونة التشغيل فوق البوستر */
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(229, 9, 20, 0.9);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .poster-link:hover .play-icon {
+            opacity: 1;
+        }
+
+        /* التعديل 20: شريط إحصائيات الموقع */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background: #181818;
+            color: #fff;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* التعديل 8: تنسيق الفوتر */
+        .footer {
+            background: #181818;
+            text-align: center;
+            padding: 25px;
+            border-top: 2px solid #e50914;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            color: #e50914;
+        }
+
+        /* التعديل 9: تنسيق زر العودة للأعلى */
+        #topBtn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #e50914;
+            color: #fff;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            font-size: 18px;
+            z-index: 9999;
+        }
+
+        /* التعديل 18: تنسيق الـ Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: #121212;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #181818;
-            padding: 10px 0;
+            font-size: 24px;
+            z-index: 99999;
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeMovie {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* التعديل 10: تحسين الموبايل (Responsive) */
+        @media (max-width: 768px) {
+            .movies-grid {
+                justify-content: center;
+            }
+
+            .movie-card {
+                width: 160px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 8px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .search-input {
+                width: 90%;
+            }
+
+            .stats {
+                gap: 15px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- كود Social Bar المضاف حديثاً بعد body مباشرة -->
-    <script src="https://pl30536637.effectivecpmnetwork.com/04/39/2d/04392d1d97986df20738e39faa9c55be.js"></script>
+    <!-- التعديل 18: شاشة التحميل (Loader) -->
+    <div id="loader">
+        تحميل...
+    </div>
 
-    <header>
-        <nav>
-            <a href="#">مسرحيات</a>
-            <a href="#">مسلسلات</a>
-            <a href="#">أفلام أجنبي</a>
-            <a href="#">أفلام عربي</a>
-        </nav>
-    </header>
+    <!-- القائمة الرئيسية -->
+    <nav>
+        <a href="#">الرئيسية</a>
+        <a href="#">أفلام عربي</a>
+        <a href="#">أفلام أجنبي</a>
+        <a href="#">مسلسلات</a>
+    </nav>
 
+    <!-- التعديل 19: رسالة ترحيب أعلى الموقع -->
+    <div class="welcome-box">
+        🎬 مرحبًا بك في موقع السينما في بيتك
+    </div>
+
+    <!-- قسم الهيرو والبحث -->
     <div class="hero">
-        <h1>السينما في بيتك</h1>
-        <p>استمتع بأحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات مزعجة.</p>
+        <h1>مرحباً بك في السينما في بيتك</h1>
+        <input type="text" class="search-input" placeholder="ابحث عن فيلمك المفضل...">
     </div>
 
-    <!-- إعلان Native Banner في أعلى الموقع بعد الهيدر مباشرة -->
-    <div class="ad-container">
-        <script async="async" data-cfasync="false" src="https://pl30536636.effectivecpmnetwork.com/0d7178a4d0671edd1d94a2119497b065/invoke.js"></script>
-        <div id="container-0d7178a4d0671edd1d94a2119497b065"></div>
+    <!-- التعديل 13: عداد عدد الأفلام -->
+    <div class="movie-count">
+        🎬 عدد الأفلام والمسلسلات المتوفرة: 250+
     </div>
 
-    <!-- 🎬 قسم أفلام عربي (10 أفلام) -->
-    <div class="section-title">🎬 أفلام عربي</div>
+    <!-- التعديل 12: شريط تمت الإضافة حديثًا -->
+    <div class="new-bar">
+        🔥 تمت إضافة أحدث الأفلام والمسلسلات يوميًا
+    </div>
+
+    <!-- شبكة عرض الأفلام الأساسية -->
     <div class="movies-grid">
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 1</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 2</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 3</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 4</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 5</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 6</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 7</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 8</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 9</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 10</div><button class="watch-btn">مشاهدة الآن</button></div>
+        <div class="movie-card">
+            <a href="#" class="poster-link">
+                <span class="quality">HD</span>
+                <img src="placeholder.jpg" alt="اسم الفيلم">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="movie-title">اسم الفيلم هنا</div>
+            <a href="#" class="watch-btn">مشاهدة</a>
+        </div>
     </div>
 
-    <!-- 🎬 قسم أفلام أجنبي (10 أفلام) -->
-    <div class="section-title">🎬 أفلام أجنبي</div>
+    <!-- التعديل 16: قسم "الأكثر مشاهدة" -->
+    <div class="section-title">🔥 الأكثر مشاهدة</div>
     <div class="movies-grid">
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 1</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 2</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 3</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 4</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 5</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 6</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 7</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 8</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 9</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم الفيلم 10</div><button class="watch-btn">مشاهدة الآن</button></div>
+        <div class="movie-card">
+            <a href="movie11.html" class="poster-link">
+                <span class="quality">1080P</span>
+                <img src="top1.jpg" class="movie-poster" alt="الفيلم الأكثر مشاهدة">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="movie-title">الفيلم الأكثر مشاهدة</div>
+            <a href="movie11.html" class="watch-btn">مشاهدة</a>
+        </div>
     </div>
 
-    <!-- 📺 قسم المسلسلات (10 مسلسلات) -->
-    <div class="section-title">📺 مسلسلات</div>
+    <!-- التعديل 17: قسم "آخر الإضافات" -->
+    <div class="section-title">🆕 آخر الإضافات</div>
     <div class="movies-grid">
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 1</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 2</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 3</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 4</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 5</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 6</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 7</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 8</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 9</div><button class="watch-btn">مشاهدة الآن</button></div>
-        <div class="movie-card"><div class="movie-poster">Poster</div><div class="movie-title">اسم المسلسل 10</div><button class="watch-btn">مشاهدة الآن</button></div>
+        <div class="movie-card">
+            <a href="new1.html" class="poster-link">
+                <span class="quality">WEB-DL</span>
+                <img src="new1.jpg" class="movie-poster" alt="أحدث فيلم">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="movie-title">أحدث فيلم</div>
+            <a href="new1.html" class="watch-btn">مشاهدة</a>
+        </div>
     </div>
+
+    <!-- التعديل 20: شريط إحصائيات الموقع -->
+    <div class="stats">
+        <span>🎬 500 فيلم</span>
+        <span>📺 120 مسلسل</span>
+        <span>🎭 80 مسرحية</span>
+    </div>
+
+    <!-- التعديل 8: الفوتر -->
+    <footer class="footer">
+        <p>© 2026 السينما في بيتك - جميع الحقوق محفوظة</p>
+        <div class="footer-links">
+            <a href="privacy.html">سياسة الخصوصية</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="dmca.html">DMCA</a>
+        </div>
+    </footer>
+
+    <!-- التعديل 9: زر العودة للأعلى -->
+    <button id="topBtn">⬆</button>
+
+    <!-- الجافاسكريبت للزر والـ Loader -->
+    <script>
+        // إخفاء الـ Loader عند اكتمال التحميل
+        window.onload = function() {
+            document.getElementById("loader").style.display = "none";
+        }
+
+        // زر العودة للأعلى
+        let btn = document.getElementById("topBtn");
+
+        window.onscroll = function() {
+            if (document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+
+        btn.onclick = function() {
+            window.scrollTo({top: 0, behavior: "smooth"});
+        }
+    </script>
 
 </body>
 </html>
