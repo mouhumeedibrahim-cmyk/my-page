@@ -1,196 +1,199 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>السينما في بيتك - أحدث الأفلام والمسلسلات</title>
-<style>
-body {
-font-family: Tahoma, Arial, sans-serif;
-background-color: #121212;
-color: #ffffff;
-text-align: center;
-padding: 0;
-margin: 0;
-}
-.navbar {
-background-color: #1f1f1f;
-padding: 12px 10px;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 15px;
-border-bottom: 2px solid #e50914;
-position: sticky;
-top: 0;
-z-index: 1000;
-}
-.navbar a {
-color: #ffffff;
-text-decoration: none;
-font-size: 15px;
-font-weight: bold;
-padding: 6px 12px;
-border-radius: 4px;
-transition: background 0.3s;
-}
-.navbar a:hover {
-background-color: #e50914;
-}
-.container {
-max-width: 900px;
-margin: 0 auto;
-padding: 20px;
-}
-h1 {
-color: #e50914;
-margin-top: 20px;
-}
-p {
-color: #b3b3b3;
-font-size: 16px;
-}
-.section-title {
-color: #fff;
-text-align: right;
-margin-top: 35px;
-border-right: 4px solid #e50914;
-padding-right: 10px;
-font-size: 20px;
-margin-bottom: 15px;
-}
-/* تنسيق شبكة الأفلام لتكون جنب بعضها */
-.movies-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-gap: 15px;
-}
-.movie-card {
-background: #1f1f1f;
-padding: 10px;
-border-radius: 8px;
-text-align: center;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-.movie-poster {
-width: 100%;
-height: 200px;
-object-fit: cover;
-border-radius: 5px;
-background-color: #333;
-margin-bottom: 8px;
-}
-.movie-title {
-font-size: 14px;
-color: #fff;
-font-weight: bold;
-margin-bottom: 8px;
-}
-.watch-btn {
-background-color: #e50914;
-color: white;
-padding: 6px 10px;
-border-radius: 5px;
-text-decoration: none;
-font-weight: bold;
-font-size: 13px;
-display: block;
-}
-.watch-btn:hover {
-background-color: #b20710;
-}
-.ad-box {
-margin: 25px auto;
-padding: 15px;
-background: #1f1f1f;
-border-radius: 8px;
-border: 1px dashed #e50914;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السينما في بيتك - أحدث الأفلام والمسلسلات</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #1f1f1f;
+            padding: 12px 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 2px solid #e50914;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #e50914;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #e50914;
+            margin-top: 20px;
+        }
+        p {
+            color: #b3b3b3;
+            font-size: 16px;
+        }
+        .section-title {
+            color: #fff;
+            text-align: right;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-right: 4px solid #e50914;
+            padding-right: 10px;
+            font-size: 20px;
+        }
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+        .movie-card {
+            background: #1f1f1f;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .movie-poster {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: #333;
+            margin-bottom: 8px;
+        }
+        .movie-title {
+            font-size: 14px;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        .watch-btn {
+            background-color: #e50914;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .watch-btn:hover {
+            background-color: #b20710;
+        }
+        .ad-box {
+            margin: 20px auto;
+            padding: 15px;
+            background: #1f1f1f;
+            border-radius: 8px;
+            border: 1px dashed #e50914;
+            color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<!-- شريط القوائم العلوي -->
-<div class="navbar">
-<a href="#arabic-section">أفلام عربي</a>
-<a href="#foreign-section">أفلام أجنبي</a>
-<a href="#series-section">مسلسلات</a>
-<a href="#plays-section">مسرحيات</a>
-</div>
+    <!-- شريط القوائم العلوي -->
+    <div class="navbar">
+        <a href="#arabic-section">أفلام عربي</a>
+        <a href="#foreign-section">أفلام أجنبي</a>
+        <a href="#series-section">مسلسلات</a>
+        <a href="#plays-section">مسرحيات</a>
+    </div>
 
-<div class="container">
-<h1>السينما في بيتك</h1>
-<p>استمتع بأحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات مزعجة.</p>
+    <div class="container">
+        <h1>السينما في بيتك</h1>
+        <p>استمتع بأحدث الأفلام والمسلسلات بجودة عالية وبدون إعلانات مزعجة.</p>
 
-<!-- مكان إعلان Adsterra (ضع كود الإعلان هنا بدلاً من التعليق) -->
-<div class="ad-box">
-<script type="text/javascript">
-// الصق كود إعلان Adsterra هنا ليظهر الإعلان بانتظام
-</script>
-</div>
+        <!-- مكان الإعلان (تمت) -->
+        <div class="ad-box">
+            تمت
+        </div>
 
-<!-- ================= قسم أفلام عربي ================= -->
-<div id="arabic-section" class="section-title">🎬 أفلام عربي</div>
-<div class="movies-grid">
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-</div>
+        <!-- ================= قسم أفلام عربي ================= -->
+        <div id="arabic-section" class="section-title">🎬 أفلام عربي</div>
+        <div class="movies-grid">
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+        </div>
 
-<!-- ================= قسم أفلام أجنبي ================= -->
-<div id="foreign-section" class="section-title">🎬 أفلام أجنبي</div>
-<div class="movies-grid">
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-</div>
+        <!-- ================= قسم أفلام أجنبي ================= -->
+        <div id="foreign-section" class="section-title">🎬 أفلام أجنبي</div>
+        <div class="movies-grid">
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم الفيلم 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+        </div>
 
-<!-- ================= قسم المسلسلات ================= -->
-<div id="series-section" class="section-title">📺 مسلسلات</div>
-<div class="movies-grid">
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-</div>
+        <!-- ================= قسم المسلسلات ================= -->
+        <div id="series-section" class="section-title">📺 مسلسلات</div>
+        <div class="movies-grid">
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسلسل 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+        </div>
 
-<!-- ================= قسم المسرحيات ================= -->
-<div id="plays-section" class="section-title">🎭 مسرحيات</div>
-<div class="movies-grid">
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 9</div><a href="رابط_الفيلم" class="watch-dir" target="_blank">مشاهدة الآن</a></div>
-  <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
-</div>
+        <!-- ================= قسم المسرحيات ================= -->
+        <div id="plays-section" class="section-title">🎭 مسرحيات</div>
+        <div class="movies-grid">
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 1</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 2</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 3</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 4</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 5</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 6</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 7</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 8</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 9</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+            <div class="movie-card"><img src="رابط_الصورة" alt="Poster" class="movie-poster"><div class="movie-title">اسم المسرحية 10</div><a href="رابط_الفيلم" class="watch-btn" target="_blank">مشاهدة الآن</a></div>
+        </div>
 
-</div>
+    </div>
+
 </body>
 </html>
