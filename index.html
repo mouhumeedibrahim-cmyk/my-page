@@ -73,23 +73,21 @@
             padding-right: 10px;
         }
 
-        /* التعديل الجديد: شبكة الأفلام المحسنة لحل الفراغات وتوزيع الكروت */
-        .movies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-            padding: 20px;
+        /* التعديل 1: شبكة الأفلام المحدثة */
+        .movies-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+            gap:20px;
+            padding:20px;
+            justify-items:center;
         }
 
-        /* التعديل الجديد: كارت الفيلم المحدث للتمركز ومنع التجمع */
-        .movie-card {
-            width: 100%;
-            max-width: 180px;
-            margin: auto;
-            background: #1f1f1f;
-            border-radius: 10px;
-            overflow: hidden;
-            /* تأثير ظهور الكارت */
+        /* التعديل 2: كارت الفيلم المحدث */
+        .movie-card{
+            width:170px;
+            background:#1f1f1f;
+            border-radius:10px;
+            overflow:hidden;
             animation: fadeMovie 0.5s ease;
         }
 
@@ -311,9 +309,8 @@
         🔥 تمت إضافة أحدث الأفلام والمسلسلات يوميًا
     </div>
 
-    <!-- شبكة عرض الأفلام الأساسية -->
+    <!-- شبكة عرض الأفلام الأساسية (مع تكرار الكارت 10 مرات) -->
     <div class="movies-grid">
-        <!-- قالب كارت الفيلم الموحد -->
         <div class="movie-card">
             <a href="movie1.html" class="poster-link">
                 <span class="quality-badge">1080P</span>
@@ -324,9 +321,124 @@
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.7</div>
                 <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">
-                    ▶ مشاهدة الآن
-                </a>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="movie-card">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+            </a>
+            <div class="movie-info">
+                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="movie-type">أكشن • كوميدي</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
             </div>
         </div>
     </div>
@@ -344,9 +456,7 @@
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 9.1</div>
                 <div class="movie-type">إثارة • دراما</div>
-                <a href="movie11.html" class="watch-btn">
-                    ▶ مشاهدة الآن
-                </a>
+                <a href="movie11.html" class="watch-btn">▶ مشاهدة الآن</a>
             </div>
         </div>
     </div>
@@ -364,9 +474,7 @@
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.4</div>
                 <div class="movie-type">مغامرات • خيال علمي</div>
-                <a href="new1.html" class="watch-btn">
-                    ▶ مشاهدة الآن
-                </a>
+                <a href="new1.html" class="watch-btn">▶ مشاهدة الآن</a>
             </div>
         </div>
     </div>
@@ -393,12 +501,10 @@
 
     <!-- الجافاسكريبت للزر والـ Loader -->
     <script>
-        // إخفاء الـ Loader عند اكتمال التحميل
         window.onload = function() {
             document.getElementById("loader").style.display = "none";
         }
 
-        // زر العودة للأعلى
         let btn = document.getElementById("topBtn");
 
         window.onscroll = function() {
