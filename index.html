@@ -4,40 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- التعديل 5: تحسين SEO -->
-    <meta name="description" content="مشاهدة أحدث الأفلام والمسلسلات بجودة عالية.">
-    <meta name="keywords" content="أفلام, مسلسلات, سينما, مشاهدة">
+    <!-- SEO الأساسي -->
+    <meta name="description" content="مشاهدة أحدث الأفلام والمسلسلات بجودة عالية اون لاين.">
+    <meta name="keywords" content="أفلام, مسلسلات, سينما في بيتك, مشاهدة أفلام">
     <meta name="author" content="السينما في بيتك">
+    <meta name="theme-color" content="#e50914">
 
     <title>السينما في بيتك</title>
 
-    <!-- التعديل 4: Favicon -->
     <link rel="icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Schema Google SEO (رابط الموقع الحقيقي) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "السينما في بيتك",
+        "description": "مشاهدة أحدث الأفلام والمسلسلات",
+        "url": "https://your-actual-username.github.io/your-repo-name"
+    }
+    </script>
 
     <style>
-        /* التعديل 19: Scroll ناعم */
         html {
             scroll-behavior: smooth;
         }
 
-        /* التعديل 20: لون تحديد النص */
         ::selection {
             background: #e50914;
             color: #fff;
         }
 
-        /* التنسيقات العامة الأساسية */
         body {
             background-color: #121212;
             color: #fff;
             font-family: Tahoma, sans-serif;
             margin: 0;
             padding: 0;
-            /* التعديل 18: إخفاء السكرول الأفقي */
             overflow-x: hidden;
         }
 
-        /* التعديل 25: ظل للهيدر */
+        /* الهيدر والقائمة */
         nav {
             background: #181818;
             padding: 15px;
@@ -57,18 +65,72 @@
             color: #e50914;
         }
 
-        /* رسالة ترحيب أعلى الموقع */
-        .welcome-box {
-            background: #222;
-            padding: 12px;
-            text-align: center;
-            color: #fff;
-            border-bottom: 2px solid #e50914;
+        /* سلايدر الأفلام المتحرك */
+        .slider {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
         }
 
-        .hero {
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .slide-info h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .slide-info a {
+            background: #e50914;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        /* حاوية الإعلانات */
+        .ad-container {
             text-align: center;
-            padding: 40px 20px;
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* الهيدر السينمائي والصورة الخلفية */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("cinema-bg.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .site-logo {
+            width: 120px;
+            margin-bottom: 15px;
         }
 
         .hero h1 {
@@ -76,7 +138,27 @@
             margin-bottom: 15px;
         }
 
-        /* التعديل 21: تأثير للبحث */
+        .hero p {
+            color: #ccc;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 25px;
+            background: #e50914;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: .3s;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05);
+        }
+
         .search-input {
             padding: 12px;
             width: 60%;
@@ -87,13 +169,37 @@
             color: #fff;
             font-size: 16px;
             transition: .3s;
+            margin-top: 15px;
         }
 
         .search-input:focus {
             box-shadow: 0 0 12px #e50914;
+            outline: none;
         }
 
-        /* تنسيق عناوين الأقسام */
+        /* أزرار التصفية (النوع) */
+        .filters {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .filters button {
+            margin: 5px;
+            cursor: pointer;
+            background: #222;
+            color: white;
+            border: 1px solid #444;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .filters button:hover, .filters button.active {
+            background: #e50914;
+            border-color: #e50914;
+        }
+
+        /* عناوين الأقسام */
         .section-title {
             font-size: 20px;
             font-weight: bold;
@@ -102,20 +208,9 @@
             text-align: right;
             border-right: 4px solid #e50914;
             padding-right: 10px;
-            position: relative;
         }
 
-        /* التعديل 22: خط أسفل عنوان القسم */
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 70px;
-            height: 3px;
-            background: #e50914;
-            margin-top: 6px;
-        }
-
-        /* شبكة الأفلام المحدثة */
+        /* شبكة الأفلام */
         .movies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -124,14 +219,15 @@
             justify-items: center;
         }
 
-        /* كارت الفيلم المحدث (التعديل 16) */
+        /* كارت الفيلم */
         .movie-card {
             width: 170px;
             background: #1f1f1f;
             border-radius: 10px;
             overflow: hidden;
-            animation: fadeMovie 0.5s ease;
-            transition: .3s;
+            position: relative;
+            cursor: pointer;
+            transition: .4s;
         }
 
         .movie-card:hover {
@@ -144,24 +240,16 @@
             display: block;
         }
 
-        /* التعديل 17: تدرج أسفل البوستر */
-        .poster-link::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 80px;
-            background: linear-gradient(transparent, #000);
-        }
-
-        /* التعديل 23: مؤشر تحميل للصورة */
         .movie-poster {
             width: 100%;
-            height: 270px;
+            height: 250px;
             object-fit: cover;
             display: block;
-            background: #2b2b2b;
+            transition: .4s;
+        }
+
+        .movie-card:hover .movie-poster {
+            transform: scale(1.05);
         }
 
         .quality-badge {
@@ -176,6 +264,23 @@
             z-index: 1;
         }
 
+        .play-hover {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #e50914;
+            padding: 8px 15px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: .3s;
+            font-size: 14px;
+        }
+
+        .poster-link:hover .play-hover {
+            opacity: 1;
+        }
+
         .movie-info {
             padding: 12px;
             text-align: center;
@@ -188,73 +293,63 @@
             font-weight: bold;
         }
 
-        .movie-year, .movie-type, .movie-rating {
+        .movie-views, .movie-year, .movie-rating {
             font-size: 13px;
-            color: #bbb;
+            color: #aaa;
             margin-bottom: 4px;
         }
 
-        /* زر المشاهدة بتأثيراته (التعديل 24) */
+        .category {
+            display: inline-block;
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 11px;
+            color: #e50914;
+            margin-bottom: 5px;
+        }
+
         .watch-btn {
             background: #e50914;
             color: #fff;
             border: none;
-            padding: 8px 15px;
+            padding: 8px;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
             display: block;
-            margin-top: 10px;
-            font-size: 14px;
+            margin-top: 8px;
+            font-size: 13px;
             transition: 0.3s;
         }
 
         .watch-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 10px #e50914;
         }
 
-        .watch-btn:active {
-            transform: scale(.95);
+        .share-btn {
+            display: block;
+            margin-top: 6px;
+            padding: 6px;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
         }
 
-        /* شريط تمت الإضافة حديثًا */
-        .new-bar {
-            background: #e50914;
-            color: #fff;
+        .share-btn:hover {
+            background: #444;
+        }
+
+        /* رسالة عدم وجود نتائج للبحث */
+        #no-result {
+            display: none;
             text-align: center;
-            padding: 12px;
-            font-weight: bold;
-            margin: 20px 15px;
-            border-radius: 8px;
-        }
-
-        /* تنسيق حاوية الإعلانات (Native Banner) */
-        .ad-container {
-            margin: 25px auto;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* عداد الأفلام */
-        .movie-count {
-            text-align: center;
-            color: #bbb;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        /* شريط إحصائيات الموقع */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-            background: #181818;
-            color: #fff;
-            flex-wrap: wrap;
-            margin-top: 30px;
+            padding: 30px;
+            color: #ccc;
+            font-size: 18px;
         }
 
         /* الفوتر */
@@ -263,6 +358,7 @@
             text-align: center;
             padding: 25px;
             border-top: 2px solid #e50914;
+            margin-top: 40px;
         }
 
         .footer p {
@@ -274,6 +370,7 @@
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
+            font-size: 14px;
         }
 
         .footer-links a:hover {
@@ -288,7 +385,8 @@
             background: #e50914;
             color: #fff;
             border: none;
-            padding: 12px 15px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: none;
@@ -296,170 +394,212 @@
             z-index: 9999;
         }
 
-        /* الـ Loader */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #121212;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            z-index: 99999;
-            color: #fff;
-        }
-
-        /* Animations */
-        @keyframes fadeMovie {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* تحسين الموبايل (Responsive) */
+        /* التحسينات الخاصة بالموبايل */
         @media (max-width: 768px) {
-            nav a {
-                display: inline-block;
-                margin: 8px;
-                font-size: 14px;
+            .movies-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 10px;
             }
-
-            .hero h1 {
-                font-size: 22px;
+            .movie-card {
+                width: 100%;
             }
-
+            .movie-poster {
+                height: 220px;
+            }
+            .slider {
+                height: 250px;
+            }
+            .slide-info h2 {
+                font-size: 18px;
+            }
             .search-input {
                 width: 90%;
-            }
-
-            .stats {
-                gap: 15px;
-                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- التعديل 1: Social Bar Advertisement -->
-    <script src="https://pl30536637.effectivecpmnetwork.com/04/39/2d/04392d1d97986df20738e39faa9c55be.js"></script>
-
-    <!-- شاشة التحميل (Loader) -->
-    <div id="loader">
-        تحميل...
-    </div>
-
     <!-- القائمة الرئيسية -->
     <nav>
-        <a href="#">الرئيسية</a>
-        <a href="#">أفلام عربي</a>
-        <a href="#">أفلام أجنبي</a>
-        <a href="#">مسلسلات</a>
+        <a href="index.html">الرئيسية</a>
+        <a href="#movies">أحدث الأفلام</a>
+        <a href="#foreign">أفلام أجنبي</a>
+        <a href="#series">مسلسلات</a>
     </nav>
 
-    <!-- رسالة ترحيب أعلى الموقع -->
-    <div class="welcome-box">
-        🎬 مرحبًا بك في موقع السينما في بيتك
+    <!-- سلايدر الأفلام المتحرك -->
+    <div class="slider">
+        <div class="slide active">
+            <img src="banner1.jpg" alt="بانر 1">
+            <div class="slide-info">
+                <h2>أحدث الأفلام المتاحة</h2>
+                <a href="movie1.html">مشاهدة الآن</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="banner2.jpg" alt="بانر 2">
+            <div class="slide-info">
+                <h2>أقوى أفلام الأكشن 2026</h2>
+                <a href="movie1.html">مشاهدة الآن</a>
+            </div>
+        </div>
     </div>
 
-    <!-- قسم الهيرو والبحث -->
+    <!-- حاوية الإعلانات الحقيقية (ضع كود الإعلان الخاص بك هنا بدلاً من التعليق) -->
+    <div class="ad-container">
+        <!-- ضع كود إعلانات Adsterra / Effective CPM هنا -->
+    </div>
+
+    <!-- الهيدر السينمائي -->
     <div class="hero">
-        <!-- التعديل 3: عند الضغط على اللوجو يرجع للرئيسية -->
-        <h1>
-            <a href="index.html" style="color:white;text-decoration:none">
-                السينما في بيتك
-            </a>
-        </h1>
+        <img src="logo.png" class="site-logo" alt="السينما في بيتك">
+        <h1>السينما في بيتك</h1>
+        <p>شاهد أحدث الأفلام والمسلسلات بجودة عالية اون لاين</p>
+        <a href="#movies" class="hero-btn">🎬 تصفح الأفلام</a>
+        <br>
         <input type="text" class="search-input" placeholder="ابحث عن فيلمك المفضل...">
     </div>
 
-    <!-- عداد عدد الأفلام -->
-    <div class="movie-count">
-        🎬 عدد الأفلام والمسلسلات المتوفرة: 250+
+    <!-- أزرار التصفية -->
+    <div class="filters">
+        <button class="active" onclick="filterMovies('all', this)">الكل</button>
+        <button onclick="filterMovies('أكشن', this)">أكشن</button>
+        <button onclick="filterMovies('كوميدي', this)">كوميدي</button>
+        <button onclick="filterMovies('رعب', this)">رعب</button>
     </div>
 
-    <!-- شريط تمت الإضافة حديثًا -->
-    <div class="new-bar">
-        🔥 تمت إضافة أحدث الأفلام والمسلسلات يوميًا
-    </div>
+    <!-- القسم الأول: أحدث الأفلام -->
+    <h2 class="section-title" id="movies">🔥 أحدث الأفلام</h2>
 
-    <!-- التعديل 1: Native Banner Advertisement -->
-    <div class="ad-container">
-        <script async="async" data-cfasync="false" src="https://pl30536636.effectivecpmnetwork.com/0d7178a4d0671edd1d94a2119497b065/invoke.js"></script>
-        <div id="container-0d7178a4d0671edd1d94a2119497b065"></div>
-    </div>
-
-    <!-- شبكة عرض الأفلام الأساسية (مع خاصية Lazy Loading للتعديل 6) -->
     <div class="movies-grid">
-        <div class="movie-card">
+        
+        <!-- كارت الفيلم الأول -->
+        <div class="movie-card" data-category="أكشن">
             <a href="movie1.html" class="poster-link">
                 <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" loading="lazy" class="movie-poster" alt="اسم الفيلم">
+                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
+                <div class="play-hover">▶ مشاهدة</div>
             </a>
             <div class="movie-info">
+                <span class="category">أكشن</span>
                 <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-views">👁 15K مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
             </div>
         </div>
-        <!-- (يمكنك تكرار البطاقات حسب رغبتك بنفس الطريقة مع استخدام loading="lazy") -->
+
+        <!-- كارت الفيلم الثاني -->
+        <div class="movie-card" data-category="كوميدي">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster2.webp" loading="lazy" class="movie-poster" alt="فيلم كوميدي">
+                <div class="play-hover">▶ مشاهدة</div>
+            </a>
+            <div class="movie-info">
+                <span class="category">كوميدي</span>
+                <div class="movie-title">فيلم كوميدي</div>
+                <div class="movie-views">👁 8K مشاهدة</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.1</div>
+                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- قسم الأفلام الأجنبية (مجهز للقسم) -->
+    <h2 class="section-title" id="foreign">🌍 أفلام أجنبية</h2>
+    <div class="movies-grid">
+        <!-- أضف كروت الأفلام الأجنبية هنا لاحقاً -->
+    </div>
+
+    <!-- قسم المسلسلات (مجهز للقسم) -->
+    <h2 class="section-title" id="series">📺 مسلسلات</h2>
+    <div class="movies-grid">
+        <!-- أضف كروت المسلسلات هنا لاحقاً -->
+    </div>
+
+    <!-- رسالة لو لم يتم العثور على نتيجة بحث -->
+    <div id="no-result">
+        😔 لم يتم العثور على فيلم بهذا الاسم
     </div>
 
     <!-- الفوتر -->
     <footer class="footer">
         <p>© 2026 السينما في بيتك - جميع الحقوق محفوظة</p>
         <div class="footer-links">
-            <a href="privacy.html">سياسة الخصوصية</a>
-            <a href="contact.html">اتصل بنا</a>
-            <a href="dmca.html">DMCA</a>
+            <a href="#">سياسة الخصوصية</a>
+            <a href="#">اتصل بنا</a>
+            <a href="#">DMCA</a>
         </div>
     </footer>
 
     <!-- زر العودة للأعلى -->
     <button id="topBtn">⬆</button>
 
-    <!-- الجافاسكريبت للزر، الـ Loader، والتعديل 2: شريط البحث الحقيقي -->
+    <!-- الأكواد البرمجية (JavaScript) -->
     <script>
-        window.onload = function() {
-            document.getElementById("loader").style.display = "none";
-        }
-
-        let btn = document.getElementById("topBtn");
-
-        window.onscroll = function() {
-            if (document.documentElement.scrollTop > 300) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
+        // السلايدر المتحرك
+        let slides = document.querySelectorAll(".slide");
+        let index = 0;
+        setInterval(() => {
+            slides[index].classList.remove("active");
+            index++;
+            if (index >= slides.length) {
+                index = 0;
             }
-        }
+            slides[index].classList.add("active");
+        }, 4000);
 
-        btn.onclick = function() {
-            window.scrollTo({top: 0, behavior: "smooth"});
-        }
-
-        // التعديل 2: شريط بحث حقيقي
-        const search = document.querySelector(".search-input");
-
-        search.addEventListener("keyup", function() {
+        // شريط البحث المطور مع دعم رسالة عدم وجود نتائج
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("keyup", function() {
             let value = this.value.toLowerCase();
+            let found = false;
 
             document.querySelectorAll(".movie-card").forEach(card => {
                 let title = card.querySelector(".movie-title").innerText.toLowerCase();
-                card.style.display = title.includes(value) ? "block" : "none";
+                if (title.includes(value)) {
+                    card.style.display = "block";
+                    found = true;
+                } else {
+                    card.style.display = "none";
+                }
             });
-        });
-    </script>
 
+            let msg = document.getElementById("no-result");
+            msg.style.display = found ? "none" : "block";
+        });
+
+        // فلترة الأفلام حسب التصنيف
+        function filterMovies(type, btn) {
+            document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            document.querySelectorAll(".movie-card").forEach(card => {
+                let category = card.getAttribute("data-category");
+                card.style.display = (type == "all" || category.includes(type)) ? "block" : "none";
+            });
+        }
+
+        // زر العودة للأعلى
+        let topBtn = document.getElementById("topBtn");
+        window.onscroll = function() {
+            if (document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        };
+        topBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
 </body>
 </html>
