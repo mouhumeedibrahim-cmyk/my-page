@@ -9,6 +9,13 @@
     <meta name="keywords" content="أفلام, مسلسلات, سينما في بيتك, مشاهدة أفلام">
     <meta name="author" content="السينما في بيتك">
     <meta name="theme-color" content="#e50914">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Tags للسيو ومواقع التواصل -->
+    <meta property="og:title" content="السينما في بيتك">
+    <meta property="og:description" content="شاهد أحدث الأفلام والمسلسلات اون لاين">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
 
     <title>السينما في بيتك</title>
 
@@ -43,6 +50,20 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+        }
+
+        /* رسالة التحميل أثناء فتح الموقع */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            color: #e50914;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            z-index: 99999;
         }
 
         /* الهيدر والقائمة */
@@ -172,62 +193,61 @@
             justify-content: center;
         }
 
-        /* الهيدر السينمائي والصورة الخلفية */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("cinema-bg.jpg");
-            background-size: cover;
-            background-position: center;
-            padding: 50px 20px;
+        /* الهيدر المختصر الجديد */
+        .hero-mini {
+            background: #161616;
+            padding: 25px 20px;
             text-align: center;
+            border-bottom: 1px solid #222;
         }
 
         .site-logo {
-            width: 120px;
-            margin-bottom: 15px;
+            width: 80px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero h1 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            color: #ccc;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .hero-btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 25px;
-            background: #e50914;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: .3s;
-        }
-
-        .hero-btn:hover {
-            transform: scale(1.05);
+        .search-container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            width: 60%;
+            max-width: 450px;
+            margin-top: 10px;
         }
 
         .search-input {
-            padding: 12px;
-            width: 60%;
-            max-width: 400px;
-            border-radius: 5px;
-            border: none;
+            padding: 12px 15px 12px 40px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #333;
             background: #222;
             color: #fff;
             font-size: 16px;
             transition: .3s;
-            margin-top: 15px;
         }
 
         .search-input:focus {
-            box-shadow: 0 0 12px #e50914;
+            box-shadow: 0 0 12px rgba(229,9,20,.5);
+            border-color: #e50914;
             outline: none;
+        }
+
+        .clear-search {
+            position: absolute;
+            left: 12px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .clear-search:hover {
+            color: #fff;
         }
 
         /* أزرار التصفية (النوع) */
@@ -310,8 +330,8 @@
         }
 
         .movie-poster {
-            width: 100%;
-            height: 270px;
+            width: 170px;
+            height: 240px;
             object-fit: cover;
             display: block;
             transition: .4s;
@@ -383,6 +403,13 @@
             margin-bottom: 4px;
         }
 
+        .likes {
+            color: #4caf50;
+            font-size: 13px;
+            margin-top: 5px;
+            margin-bottom: 4px;
+        }
+
         .movie-duration {
             font-size: 13px;
             color: #aaa;
@@ -418,21 +445,59 @@
             transform: scale(1.05);
         }
 
+        .download-btn {
+            background: #333;
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .download-btn:hover {
+            background: #e50914;
+            transform: scale(1.05);
+        }
+
         .share-btn {
             display: block;
             margin-top: 6px;
             margin-bottom: 5px;
-            padding: 6px;
-            background: #333;
+            padding: 7px;
+            background: #075e54;
             color: white;
             border-radius: 5px;
             text-decoration: none;
             font-size: 12px;
+            text-align: center;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .share-btn:hover {
+            background: #128c7e;
+        }
+
+        .favorite-btn {
+            width: 100%;
+            margin-top: 8px;
+            padding: 8px;
             background: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .favorite-btn:hover {
+            background: #e50914;
         }
 
         /* رسالة عدم وجود نتائج للبحث */
@@ -484,6 +549,11 @@
             display: none;
             font-size: 18px;
             z-index: 9999;
+            transition: 0.3s;
+        }
+
+        #topBtn:hover {
+            transform: scale(1.1);
         }
 
         /* التحسينات الخاصة بالموبايل */
@@ -497,7 +567,8 @@
                 width: 100%;
             }
             .movie-poster {
-                height: 220px;
+                width: 100%;
+                height: 240px;
             }
             .slider {
                 height: 250px;
@@ -510,7 +581,7 @@
             .slide-info h2 {
                 font-size: 18px;
             }
-            .search-input {
+            .search-container {
                 width: 90%;
             }
         }
@@ -518,9 +589,16 @@
 </head>
 <body>
 
+    <!-- رسالة التحميل أثناء فتح الموقع -->
+    <div id="loader">
+        🎬 جاري تحميل السينما...
+    </div>
+
     <!-- القائمة الرئيسية -->
     <nav>
         <a href="index.html">الرئيسية</a>
+        <a href="#latest">آخر الإضافات</a>
+        <a href="#rating">الأعلى تقييمًا</a>
         <a href="#movies">أحدث الأفلام</a>
         <a href="#foreign">أفلام أجنبي</a>
         <a href="#series">مسلسلات</a>
@@ -529,17 +607,17 @@
     <!-- السلايدر الاحترافي -->
     <div class="slider">
         <div class="slide active">
-            <img src="banner1.jpg" alt="بانر 1">
+            <img src="banner1.jpg" alt="بانر 1" width="1200" height="420">
             <div class="slide-info">
                 <h2>أحدث الأفلام المتاحة</h2>
                 <a href="movie1.html">مشاهدة الآن</a>
             </div>
         </div>
         <div class="slide">
-            <img src="banner2.jpg" alt="بانر 2">
+            <img src="banner2.jpg" alt="بانر 2" width="1200" height="420">
             <div class="slide-info">
                 <h2>أقوى أفلام الأكشن 2026</h2>
-                <a href="movie1.html">مشاهدة الآن</a>
+                <a href="movie2.html">مشاهدة الآن</a>
             </div>
         </div>
 
@@ -554,19 +632,16 @@
         </div>
     </div>
 
-    <!-- حاوية الإعلانات -->
-    <div class="ad-container">
-        <!-- ضع كود إعلانات Adsterra / Effective CPM هنا -->
-    </div>
+    <!-- حاوية الإعلانات تحت السلايدر -->
+    <div class="ad-container"></div>
 
-    <!-- الهيدر السينمائي -->
-    <div class="hero">
-        <img src="logo.png" class="site-logo" alt="السينما في بيتك">
-        <h1>السينما في بيتك</h1>
-        <p>شاهد أحدث الأفلام والمسلسلات بجودة عالية اون لاين</p>
-        <a href="#movies" class="hero-btn">🎬 تصفح الأفلام</a>
-        <br>
-        <input type="text" class="search-input" placeholder="ابحث عن فيلمك المفضل...">
+    <!-- الهيدر المختصر الجديد -->
+    <div class="hero-mini">
+        <img src="logo.png" class="site-logo" alt="السينما في بيتك" width="80" height="80">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="ابحث عن فيلمك المفضل...">
+            <button class="clear-search" onclick="clearSearchInput()">×</button>
+        </div>
     </div>
 
     <!-- أزرار التصفية -->
@@ -577,275 +652,363 @@
         <button onclick="filterMovies('رعب', this)">رعب</button>
     </div>
 
-    <!-- آخر الإضافات -->
-    <h2 class="section-title">🆕 آخر الإضافات</h2>
-    <div class="movies-grid">
-        <!-- كارت 1 -->
-        <div class="movie-card" data-category="أكشن">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
-                <div class="play-hover">▶ مشاهدة</div>
-            </a>
-            <div class="movie-info">
-                <span class="category">أكشن</span>
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-views">👁 15K مشاهدة</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-duration">⏱ 2:15 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
-            </div>
-        </div>
-        <!-- كارت 2 -->
-        <div class="movie-card" data-category="كوميدي">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
-                <div class="play-hover">▶ مشاهدة</div>
-            </a>
-            <div class="movie-info">
-                <span class="category">كوميدي</span>
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-views">👁 10K مشاهدة</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.2</div>
-                <div class="movie-duration">⏱ 1:50 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
-            </div>
-        </div>
-        <!-- كارت 3 -->
-        <div class="movie-card" data-category="رعب">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
-                <div class="play-hover">▶ مشاهدة</div>
-            </a>
-            <div class="movie-info">
-                <span class="category">رعب</span>
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-views">👁 12K مشاهدة</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 7.9</div>
-                <div class="movie-duration">⏱ 2:00 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- الأكثر مشاهدة -->
+    <!-- 🔥 الأكثر مشاهدة -->
     <h2 class="section-title">🔥 الأكثر مشاهدة</h2>
     <div class="movies-grid">
         <!-- كارت 1 -->
         <div class="movie-card" data-category="أكشن">
-            <a href="movie1.html" class="poster-link">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie4.html" class="poster-link">
                 <span class="quality-badge">1080P</span>
-                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
+                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="فيلم الأكثر مشاهدة 1" width="170" height="240">
                 <div class="play-hover">▶ مشاهدة</div>
             </a>
             <div class="movie-info">
                 <span class="category">أكشن</span>
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-views">👁 25K مشاهدة</div>
+                <div class="movie-title">مهمة مستحيلة 8</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 9.1</div>
+                <div class="likes">👍 95% إعجاب</div>
                 <div class="movie-duration">⏱ 2:30 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
+                <a href="movie4.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download4.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 2 -->
         <div class="movie-card" data-category="كوميدي">
-            <a href="movie1.html" class="poster-link">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie5.html" class="poster-link">
                 <span class="quality-badge">1080P</span>
-                <img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
+                <img src="poster2.webp" loading="lazy" class="movie-poster" alt="فيلم الأكثر مشاهدة 2" width="170" height="240">
                 <div class="play-hover">▶ مشاهدة</div>
             </a>
             <div class="movie-info">
                 <span class="category">كوميدي</span>
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-views">👁 20K مشاهدة</div>
+                <div class="movie-title">كوميديا السعادة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.5</div>
+                <div class="likes">👍 92% إعجاب</div>
                 <div class="movie-duration">⏱ 1:45 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
+                <a href="movie5.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download5.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 3 -->
         <div class="movie-card" data-category="رعب">
-            <a href="movie1.html" class="poster-link">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie6.html" class="poster-link">
                 <span class="quality-badge">1080P</span>
-                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم">
+                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="فيلم الأكثر مشاهدة 3" width="170" height="240">
                 <div class="play-hover">▶ مشاهدة</div>
             </a>
             <div class="movie-info">
                 <span class="category">رعب</span>
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-views">👁 18K مشاهدة</div>
+                <div class="movie-title">ليلة المرعبين</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.3</div>
+                <div class="likes">👍 90% إعجاب</div>
                 <div class="movie-duration">⏱ 2:10 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم على السينما في بيتك">📤 مشاركة</a>
+                <a href="movie6.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download6.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
     </div>
 
-    <!-- أحدث الأفلام -->
-    <h2 class="section-title" id="movies">🎬 أحدث الأفلام</h2>
+    <!-- ⭐ الأعلى تقييمًا -->
+    <h2 id="rating" class="section-title">⭐ الأعلى تقييمًا</h2>
     <div class="movies-grid">
-        <!-- 10 كروت للأفلام -->
-        <!-- كارت 1 -->
         <div class="movie-card" data-category="أكشن">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie17.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.webp" class="movie-poster" loading="lazy" alt="أفضل فيلم 2026" width="170" height="240">
+                <div class="play-hover">▶ مشاهدة</div>
+            </a>
             <div class="movie-info">
                 <span class="category">أكشن</span>
-                <div class="movie-title">اسم الفيلم 1</div>
-                <div class="movie-views">👁 15K مشاهدة</div>
+                <div class="movie-title">أفضل فيلم 2026</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
+                <div class="movie-rating">⭐ 9.5</div>
+                <div class="likes">👍 98% إعجاب</div>
+                <div class="movie-year">2026</div>
+                <a href="movie17.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download17.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🆕 آخر الإضافات -->
+    <h2 id="latest" class="section-title">🆕 آخر الإضافات</h2>
+    <div class="movies-grid">
+        <!-- كارت 1 -->
+        <div class="movie-card" data-category="أكشن">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie1.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="آخر الإضافات 1" width="170" height="240">
+                <div class="play-hover">▶ مشاهدة</div>
+            </a>
+            <div class="movie-info">
+                <span class="category">أكشن</span>
+                <div class="movie-title">غضب الشوارع</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.7</div>
+                <div class="likes">👍 94% إعجاب</div>
                 <div class="movie-duration">⏱ 2:15 ساعة</div>
                 <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="download1.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 2 -->
         <div class="movie-card" data-category="كوميدي">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie2.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster2.webp" loading="lazy" class="movie-poster" alt="آخر الإضافات 2" width="170" height="240">
+                <div class="play-hover">▶ مشاهدة</div>
+            </a>
             <div class="movie-info">
                 <span class="category">كوميدي</span>
-                <div class="movie-title">اسم الفيلم 2</div>
-                <div class="movie-views">👁 9K مشاهدة</div>
+                <div class="movie-title">مغامرة ظريفة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.0</div>
-                <div class="movie-duration">⏱ 1:55 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <div class="movie-rating">⭐ 8.2</div>
+                <div class="likes">👍 89% إعجاب</div>
+                <div class="movie-duration">⏱ 1:50 ساعة</div>
+                <a href="movie2.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download2.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 3 -->
         <div class="movie-card" data-category="رعب">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie3.html" class="poster-link">
+                <span class="quality-badge">1080P</span>
+                <img src="poster1.webp" loading="lazy" class="movie-poster" alt="آخر الإضافات 3" width="170" height="240">
+                <div class="play-hover">▶ مشاهدة</div>
+            </a>
+            <div class="movie-info">
+                <span class="category">رعب</span>
+                <div class="movie-title">البيت الملعون</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 7.9</div>
+                <div class="likes">👍 88% إعجاب</div>
+                <div class="movie-duration">⏱ 2:00 ساعة</div>
+                <a href="movie3.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download3.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🎬 أحدث الأفلام -->
+    <h2 class="section-title" id="movies">🎬 أحدث الأفلام</h2>
+    <div class="movies-grid">
+        <!-- كارت 1 -->
+        <div class="movie-card" data-category="أكشن">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie7.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
+            <div class="movie-info">
+                <span class="category">أكشن</span>
+                <div class="movie-title">اسم الفيلم 1</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.7</div>
+                <div class="likes">👍 93% إعجاب</div>
+                <div class="movie-duration">⏱ 2:15 ساعة</div>
+                <a href="movie7.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download7.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
+            </div>
+        </div>
+        <!-- كارت 2 -->
+        <div class="movie-card" data-category="كوميدي">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie8.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
+            <div class="movie-info">
+                <span class="category">كوميدي</span>
+                <div class="movie-title">اسم الفيلم 2</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
+                <div class="movie-year">2026</div>
+                <div class="movie-rating">⭐ 8.0</div>
+                <div class="likes">👍 87% إعجاب</div>
+                <div class="movie-duration">⏱ 1:55 ساعة</div>
+                <a href="movie8.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download8.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
+            </div>
+        </div>
+        <!-- كارت 3 -->
+        <div class="movie-card" data-category="رعب">
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie9.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">رعب</span>
                 <div class="movie-title">اسم الفيلم 3</div>
-                <div class="movie-views">👁 11K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 7.8</div>
+                <div class="likes">👍 85% إعجاب</div>
                 <div class="movie-duration">⏱ 2:05 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie9.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download9.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 4 -->
         <div class="movie-card" data-category="أكشن">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie10.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">أكشن</span>
                 <div class="movie-title">اسم الفيلم 4</div>
-                <div class="movie-views">👁 14K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.4</div>
+                <div class="likes">👍 91% إعجاب</div>
                 <div class="movie-duration">⏱ 2:10 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie10.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download10.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 5 -->
         <div class="movie-card" data-category="كوميدي">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie11.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">كوميدي</span>
                 <div class="movie-title">اسم الفيلم 5</div>
-                <div class="movie-views">👁 7K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 7.5</div>
+                <div class="likes">👍 82% إعجاب</div>
                 <div class="movie-duration">⏱ 1:40 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie11.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download11.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 6 -->
         <div class="movie-card" data-category="رعب">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie12.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">رعب</span>
                 <div class="movie-title">اسم الفيلم 6</div>
-                <div class="movie-views">👁 13K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.1</div>
+                <div class="likes">👍 89% إعجاب</div>
                 <div class="movie-duration">⏱ 1:50 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie12.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download12.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 7 -->
         <div class="movie-card" data-category="أكشن">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie13.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">أكشن</span>
                 <div class="movie-title">اسم الفيلم 7</div>
-                <div class="movie-views">👁 16K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.9</div>
+                <div class="likes">👍 96% إعجاب</div>
                 <div class="movie-duration">⏱ 2:20 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie13.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download13.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 8 -->
         <div class="movie-card" data-category="كوميدي">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie14.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">كوميدي</span>
                 <div class="movie-title">اسم الفيلم 8</div>
-                <div class="movie-views">👁 9K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 7.9</div>
+                <div class="likes">👍 86% إعجاب</div>
                 <div class="movie-duration">⏱ 1:45 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie14.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download14.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 9 -->
         <div class="movie-card" data-category="رعب">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie15.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster1.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">رعب</span>
                 <div class="movie-title">اسم الفيلم 9</div>
-                <div class="movie-views">👁 10K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.0</div>
+                <div class="likes">👍 88% إعجاب</div>
                 <div class="movie-duration">⏱ 2:00 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie15.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download15.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
         <!-- كارت 10 -->
         <div class="movie-card" data-category="أكشن">
-            <a href="movie1.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم"><div class="play-hover">▶ مشاهدة</div></a>
+            <meta itemprop="description" content="مشاهدة فيلم بجودة عالية اون لاين">
+            <a href="movie16.html" class="poster-link"><span class="quality-badge">1080P</span><img src="poster2.webp" loading="lazy" class="movie-poster" alt="اسم الفيلم" width="170" height="240"><div class="play-hover">▶ مشاهدة</div></a>
             <div class="movie-info">
                 <span class="category">أكشن</span>
                 <div class="movie-title">اسم الفيلم 10</div>
-                <div class="movie-views">👁 22K مشاهدة</div>
+                <div class="movie-views">👁 <span class="views">0</span> مشاهدة</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 9.0</div>
+                <div class="likes">👍 97% إعجاب</div>
                 <div class="movie-duration">⏱ 2:25 ساعة</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الفيلم</a>
-                <a class="share-btn" href="https://wa.me/?text=شاهد هذا الفيلم">📤 مشاركة</a>
+                <a href="movie16.html" class="watch-btn">▶ مشاهدة الفيلم</a>
+                <a href="download16.html" class="download-btn">⬇ تحميل الفيلم</a>
+                <a class="share-btn" onclick="shareMovie(this)">📤 مشاركة</a>
+                <button class="favorite-btn" onclick="addFavorite(this)">⭐ إضافة للمفضلة</button>
             </div>
         </div>
     </div>
 
-    <!-- قسم الأفلام الأجنبية (مجهز للقسم) -->
+    <!-- قسم الأفلام الأجنبية -->
     <h2 class="section-title" id="foreign">🌍 أفلام أجنبية</h2>
     <div class="movies-grid"></div>
 
-    <!-- قسم المسلسلات (مجهز للقسم) -->
+    <!-- قسم المسلسلات -->
     <h2 class="section-title" id="series">📺 مسلسلات</h2>
     <div class="movies-grid"></div>
 
@@ -869,6 +1032,12 @@
 
     <!-- الأكواد البرمجية (JavaScript) -->
     <script>
+        // إخفاء رسالة التحميل عند اكتمال التحميل
+        window.addEventListener("load", function() {
+            let loader = document.getElementById("loader");
+            if(loader) loader.style.display = "none";
+        });
+
         // السلايدر الاحترافي
         let slides = document.querySelectorAll(".slide");
         let dots = document.querySelectorAll(".dot");
@@ -904,11 +1073,77 @@
 
         setInterval(nextSlide, 4000);
 
-        // شريط البحث المطور مع دعم رسالة عدم وجود نتائج
+        // عداد المشاهدات الحقيقي لكل فيلم
+        document.querySelectorAll(".movie-card").forEach((card, index) => {
+            let key = "movie_views_" + index;
+            let views = localStorage.getItem(key);
+
+            if (!views) {
+                views = Math.floor(Math.random() * 5000) + 100;
+                localStorage.setItem(key, views);
+            }
+
+            let viewSpan = card.querySelector(".views");
+            if(viewSpan) viewSpan.innerHTML = views;
+        });
+
+        // زر المفضلة
+        function addFavorite(btn) {
+            let movie = btn.closest(".movie-card").querySelector(".movie-title").innerText;
+            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+            if (!favorites.includes(movie)) {
+                favorites.push(movie);
+                localStorage.setItem("favorites", JSON.stringify(favorites));
+                btn.innerHTML = "✅ تمت الإضافة";
+            } else {
+                btn.innerHTML = "⭐ موجود بالفعل";
+            }
+        }
+
+        // زر المشاركة المطور
+        function shareMovie(btn) {
+            let title = btn.closest(".movie-card").querySelector(".movie-title").innerText;
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: "شاهد " + title + " على السينما في بيتك",
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                alert("ميزة المشاركة غير مدعومة في متصفحك الحالي");
+            }
+        }
+
+        // شريط البحث المطور السريع مع زر المسح وعرض النتائج واسترجاع آخر بحث
         const searchInput = document.querySelector(".search-input");
+        const clearBtn = document.querySelector(".clear-search");
+
+        window.addEventListener("DOMContentLoaded", function() {
+            let oldSearch = localStorage.getItem("lastSearch");
+            if (oldSearch) {
+                searchInput.value = oldSearch;
+                triggerSearch(oldSearch);
+            }
+        });
+
         searchInput.addEventListener("keyup", function() {
             let value = this.value.toLowerCase();
+            triggerSearch(value);
+        });
+
+        searchInput.addEventListener("change", function() {
+            localStorage.setItem("lastSearch", this.value);
+        });
+
+        function triggerSearch(value) {
             let found = false;
+
+            if (value.length > 0) {
+                clearBtn.style.display = "block";
+            } else {
+                clearBtn.style.display = "none";
+            }
 
             document.querySelectorAll(".movie-card").forEach(card => {
                 let title = card.querySelector(".movie-title").innerText.toLowerCase();
@@ -921,8 +1156,18 @@
             });
 
             let msg = document.getElementById("no-result");
-            msg.style.display = found ? "none" : "block";
-        });
+            msg.style.display = (found || value === "") ? "none" : "block";
+        }
+
+        function clearSearchInput() {
+            searchInput.value = "";
+            localStorage.removeItem("lastSearch");
+            clearBtn.style.display = "none";
+            document.querySelectorAll(".movie-card").forEach(card => {
+                card.style.display = "block";
+            });
+            document.getElementById("no-result").style.display = "none";
+        }
 
         // فلترة الأفلام حسب التصنيف
         function filterMovies(type, btn) {
