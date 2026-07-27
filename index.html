@@ -4,288 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>السينما في بيتك</title>
-    <style>
-        /* التنسيقات العامة الأساسية */
-        body {
-            background-color: #121212;
-            color: #fff;
-            font-family: Tahoma, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+    
+    <!-- أكواد الـ SEO ومشاركة المنصات -->
+    <meta name="description" content="السينما في بيتك - مشاهدة أحدث الأفلام والمسلسلات بجودة عالية مع معلومات كاملة عن كل فيلم">
+    <meta name="keywords" content="أفلام, مسلسلات, مشاهدة أفلام, أفلام عربية, أفلام أجنبية">
+    <meta name="author" content="السينما في بيتك">
+    <meta property="og:title" content="السينما في بيتك">
+    <meta property="og:description" content="شاهد أحدث الأفلام والمسلسلات">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png">
 
-        nav {
-            background: #181818;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 2px solid #e50914;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-        }
-
-        nav a:hover {
-            color: #e50914;
-        }
-
-        /* رسالة ترحيب أعلى الموقع */
-        .welcome-box {
-            background: #222;
-            padding: 12px;
-            text-align: center;
-            color: #fff;
-            border-bottom: 2px solid #e50914;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .search-input {
-            padding: 12px;
-            width: 60%;
-            max-width: 400px;
-            border-radius: 5px;
-            border: none;
-            background: #222;
-            color: #fff;
-            font-size: 16px;
-        }
-
-        /* تنسيق عناوين الأقسام */
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-            margin: 30px 20px 15px;
-            text-align: right;
-            border-right: 4px solid #e50914;
-            padding-right: 10px;
-        }
-
-        /* شبكة الأفلام المحدثة */
-        .movies-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-            gap:20px;
-            padding:20px;
-            justify-items:center;
-        }
-
-        /* كارت الفيلم المحدث */
-        .movie-card{
-            width:170px;
-            background:#1f1f1f;
-            border-radius:10px;
-            overflow:hidden;
-            animation: fadeMovie 0.5s ease;
-        }
-
-        .poster-link {
-            position: relative;
-            display: block;
-        }
-
-        .movie-poster {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .quality-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #e50914;
-            color: #fff;
-            padding: 3px 8px;
-            font-size: 12px;
-            border-radius: 4px;
-        }
-
-        .movie-info {
-            padding: 12px;
-            text-align: center;
-        }
-
-        .movie-title {
-            font-size: 15px;
-            margin-bottom: 5px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .movie-year, .movie-type, .movie-rating {
-            font-size: 13px;
-            color: #bbb;
-            margin-bottom: 4px;
-        }
-
-        /* زر المشاهدة بتأثيراته */
-        .watch-btn {
-            background: #e50914;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            margin-top: 10px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .watch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #e50914;
-        }
-
-        /* شريط تمت الإضافة حديثًا */
-        .new-bar {
-            background: #e50914;
-            color: #fff;
-            text-align: center;
-            padding: 12px;
-            font-weight: bold;
-            margin: 20px 15px;
-            border-radius: 8px;
-        }
-
-        /* عداد الأفلام */
-        .movie-count {
-            text-align: center;
-            color: #bbb;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        /* شريط إحصائيات الموقع */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-            background: #181818;
-            color: #fff;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        /* الفوتر */
-        .footer {
-            background: #181818;
-            text-align: center;
-            padding: 25px;
-            border-top: 2px solid #e50914;
-        }
-
-        .footer p {
-            margin-bottom: 10px;
-            color: #bbb;
-        }
-
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer-links a:hover {
-            color: #e50914;
-        }
-
-        /* زر العودة للأعلى */
-        #topBtn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #e50914;
-            color: #fff;
-            border: none;
-            padding: 12px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-            font-size: 18px;
-            z-index: 9999;
-        }
-
-        /* الـ Loader */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #121212;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            z-index: 99999;
-            color: #fff;
-        }
-
-        /* Animations */
-        @keyframes fadeMovie {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* تحسين الموبايل (Responsive) */
-        @media (max-width: 768px) {
-            nav a {
-                display: inline-block;
-                margin: 8px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 22px;
-            }
-
-            .search-input {
-                width: 90%;
-            }
-
-            .stats {
-                gap: 15px;
-                font-size: 14px;
-            }
-        }
-    </style>
+    <!-- ربط ملف الـ CSS الخارجي -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- شاشة التحميل (Loader) -->
+    <!-- 2️⃣ إعلان Social Bar العلوي الثابت -->
+    <div class="ad-top">
+        <script src="https://pl30536637.effectivecpmnetwork.com/04/39/2d/04392d1d97986df20738e39faa9c55be.js"></script>
+    </div>
+
+    <!-- شاشة التحميل -->
     <div id="loader">
         تحميل...
     </div>
 
     <!-- القائمة الرئيسية -->
     <nav>
-        <a href="#">الرئيسية</a>
-        <a href="#">أفلام عربي</a>
-        <a href="#">أفلام أجنبي</a>
-        <a href="#">مسلسلات</a>
+        <a href="index.html">الرئيسية</a>
+        <a href="arabic.html">أفلام عربي</a>
+        <a href="foreign.html">أفلام أجنبي</a>
+        <a href="series.html">مسلسلات</a>
+        <a href="pages/about.html">عن الموقع</a>
     </nav>
 
     <!-- رسالة ترحيب أعلى الموقع -->
@@ -293,10 +45,12 @@
         🎬 مرحبًا بك في موقع السينما في بيتك
     </div>
 
-    <!-- قسم الهيرو والبحث -->
+    <!-- قسم الهيرو والبحث الحقيقي -->
     <div class="hero">
-        <h1>مرحباً بك في السينما في بيتك</h1>
-        <input type="text" class="search-input" placeholder="ابحث عن فيلمك المفضل...">
+        <h1>
+            <a href="index.html">السينما في بيتك</a>
+        </h1>
+        <input type="text" id="searchBox" class="search-input" placeholder="ابحث عن فيلمك المفضل..." onkeyup="searchMovies()">
     </div>
 
     <!-- عداد عدد الأفلام -->
@@ -309,272 +63,78 @@
         🔥 تمت إضافة أحدث الأفلام والمسلسلات يوميًا
     </div>
 
-    <!-- شبكة عرض الأفلام الأساسية (مع تكرار الكارت 10 مرات) -->
-    <div class="movies-grid">
+    <!-- شبكة عرض الأفلام مع المعرف الجديد -->
+    <div class="movies-grid" id="moviesContainer">
+        <!-- فيلم 1 -->
         <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
+            <a href="movies/shamshon.html" class="poster-link">
                 <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
+                <img src="images/posters/shamshon.jpg" loading="lazy" class="movie-poster" alt="شامشون ودليله">
             </a>
             <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
+                <div class="movie-title">شامشون ودليله</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-        <div class="movie-card">
-            <a href="movie1.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="poster1.jpg" class="movie-poster" alt="اسم الفيلم">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">اسم الفيلم</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.7</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- قسم الأكثر مشاهدة -->
-    <div class="section-title">🔥 الأكثر مشاهدة</div>
-    <div class="movies-grid">
-        <div class="movie-card">
-            <a href="movie11.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="top1.jpg" class="movie-poster" alt="الفيلم 1">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">الفيلم الأكثر مشاهدة 1</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 9.1</div>
-                <div class="movie-type">إثارة • دراما</div>
-                <a href="movie11.html" class="watch-btn">▶ مشاهدة الآن</a>
+                <div class="movie-type">أكشن • دراما</div>
+                <a href="movies/shamshon.html" class="watch-btn">▶ مشاهدة الآن</a>
             </div>
         </div>
 
+        <!-- فيلم 2 -->
         <div class="movie-card">
-            <a href="movie12.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="top2.jpg" class="movie-poster" alt="الفيلم 2">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">الفيلم الأكثر مشاهدة 2</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.9</div>
-                <div class="movie-type">أكشن • مغامرة</div>
-                <a href="movie12.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-
-        <div class="movie-card">
-            <a href="movie13.html" class="poster-link">
+            <a href="movies/khali-balk.html" class="poster-link">
                 <span class="quality-badge">WEB-DL</span>
-                <img src="top3.jpg" class="movie-poster" alt="الفيلم 3">
+                <img src="images/posters/khali.jpg" loading="lazy" class="movie-poster" alt="خلي بالك من نفسك">
             </a>
             <div class="movie-info">
-                <div class="movie-title">الفيلم الأكثر مشاهدة 3</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.8</div>
-                <div class="movie-type">أكشن • كوميدي</div>
-                <a href="movie13.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- قسم آخر الإضافات -->
-    <div class="section-title">🆕 آخر الإضافات</div>
-    <div class="movies-grid">
-        <div class="movie-card">
-            <a href="new1.html" class="poster-link">
-                <span class="quality-badge">WEB-DL</span>
-                <img src="new1.jpg" class="movie-poster" alt="أحدث فيلم 1">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">أحدث فيلم 1</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.4</div>
-                <div class="movie-type">مغامرات • خيال علمي</div>
-                <a href="new1.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-
-        <div class="movie-card">
-            <a href="new2.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="new2.jpg" class="movie-poster" alt="أحدث فيلم 2">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">أحدث فيلم 2</div>
-                <div class="movie-year">2026</div>
-                <div class="movie-rating">⭐ 8.6</div>
-                <div class="movie-type">رعب • إثارة</div>
-                <a href="new2.html" class="watch-btn">▶ مشاهدة الآن</a>
-            </div>
-        </div>
-
-        <div class="movie-card">
-            <a href="new3.html" class="poster-link">
-                <span class="quality-badge">1080P</span>
-                <img src="new3.jpg" class="movie-poster" alt="أحدث فيلم 3">
-            </a>
-            <div class="movie-info">
-                <div class="movie-title">أحدث فيلم 3</div>
+                <div class="movie-title">خلي بالك من نفسك</div>
                 <div class="movie-year">2026</div>
                 <div class="movie-rating">⭐ 8.5</div>
-                <div class="movie-type">كوميدي • عائلي</div>
-                <a href="new3.html" class="watch-btn">▶ مشاهدة الآن</a>
+                <div class="movie-type">كوميدي</div>
+                <a href="movies/khali-balk.html" class="watch-btn">▶ مشاهدة الآن</a>
             </div>
         </div>
     </div>
 
-    <!-- شريط إحصائيات الموقع -->
-    <div class="stats">
-        <span>🎬 500 فيلم</span>
-        <span>📺 120 مسلسل</span>
-        <span>🎭 80 مسرحية</span>
+    <!-- 2️⃣ إعلان البنر السفلي الثابت قبل الفوتر -->
+    <div class="ad-bottom">
+        <script async="async" data-cfasync="false" src="https://pl30536636.effectivecpmnetwork.com/0d7178a4d0671edd1d94a2119497b065/invoke.js"></script>
+        <div id="container-0d7178a4d0671edd1d94a2119497b065"></div>
     </div>
 
     <!-- الفوتر -->
     <footer class="footer">
         <p>© 2026 السينما في بيتك - جميع الحقوق محفوظة</p>
         <div class="footer-links">
-            <a href="privacy.html">سياسة الخصوصية</a>
-            <a href="contact.html">اتصل بنا</a>
-            <a href="dmca.html">DMCA</a>
+            <a href="pages/about.html">عن الموقع</a>
+            <a href="pages/privacy.html">سياسة الخصوصية</a>
+            <a href="pages/contact.html">اتصل بنا</a>
+            <a href="pages/dmca.html">DMCA</a>
         </div>
     </footer>
 
     <!-- زر العودة للأعلى -->
     <button id="topBtn">⬆</button>
 
-    <!-- الجافاسكريبت للزر والـ Loader -->
+    <!-- كود البحث الديناميكي -->
     <script>
-        window.onload = function() {
-            document.getElementById("loader").style.display = "none";
-        }
+        function searchMovies() {
+            let input = document.getElementById("searchBox").value.toLowerCase();
+            let movies = document.querySelectorAll(".movie-card");
 
-        let btn = document.getElementById("topBtn");
-
-        window.onscroll = function() {
-            if (document.documentElement.scrollTop > 300) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
-            }
-        }
-
-        btn.onclick = function() {
-            window.scrollTo({top: 0, behavior: "smooth"});
+            movies.forEach(function(movie) {
+                let title = movie.querySelector(".movie-title").innerText.toLowerCase();
+                if (title.includes(input)) {
+                    movie.style.display = "block";
+                } else {
+                    movie.style.display = "none";
+                }
+            });
         }
     </script>
+
+    <!-- ربط ملف الجافاسكريبت الخارجي للتفاعل والسرعة -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>
